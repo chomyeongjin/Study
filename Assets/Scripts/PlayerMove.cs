@@ -112,6 +112,19 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("isJump", false);
         }
+
+        if(collision.gameObject.CompareTag("Enemies"))
+        {
+            anim.SetBool("isHurt", true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemies"))
+        {
+            anim.SetBool("isHurt", false);
+        }
     }
 }
 
