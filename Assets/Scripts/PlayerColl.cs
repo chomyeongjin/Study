@@ -9,10 +9,18 @@ public class PlayerColl : MonoBehaviour
     public Text gemScore;
     public int score;
 
+    public Text lifeNum;
+    public int num;
+
+    public GameObject resultView;
+
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        num = 3;
+
+        resultView.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,9 +39,30 @@ public class PlayerColl : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (score == 5)
+        if (collision.gameObject.CompareTag("Home"))
         {
-            SceneManager.LoadScene("NextScene");
+            SceneManager.LoadScene("EndingScene");
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "Slime")
+        {
+            num -= 1;
+            lifeNum.text = num.ToString();
+
+            LifeCheck();
+        }
+    }
+
+    public void LifeCheck()
+    {
+        if(num <= 0)
+        {
+            Time.timeScale = 0;
+
+            resultView.SetActive(true);
         }
     }
 }

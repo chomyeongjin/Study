@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Enemies
   - Item
+  - Home
   layers:
   - Default
   - TransparentFX

@@ -8,10 +8,12 @@ public class PlayerMove : MonoBehaviour
 
     public float jumpForce;
 
+    [HideInInspector]
     public Rigidbody2D rig;
     Animator anim;
 
-    SpriteRenderer sr;
+    [HideInInspector]
+    public SpriteRenderer sr;
 
    
     public bool isLadder; //사다리 변수
