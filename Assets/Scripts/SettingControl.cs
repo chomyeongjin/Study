@@ -23,8 +23,15 @@ public class SettingControl : MonoBehaviour
         settingView.SetActive(false);
     }
 
+    public void OnClickHomeBtn() {
+        SceneManager.LoadScene("StartScene");
+        settingView.SetActive(false);
+    }
+
     public void OnClickSetting() {
         Time.timeScale = 0;
         settingView.SetActive(true);
     }
+
+    
 }

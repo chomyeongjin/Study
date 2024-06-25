@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.defaultSolution": "Study.sln"
+    "dotnet.defaultSolution": "Study.sln",
+    "dotnet.preferCSharpExtension": true
 }
