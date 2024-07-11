@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     public int speed = 5; // 플레이어 움직임 속도
 
     public float jumpForce;
+    public bool isJump;
 
     [HideInInspector]
     public Rigidbody2D rig;
@@ -48,8 +49,12 @@ public class PlayerMove : MonoBehaviour
         // jump
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            anim.SetBool("isJump", true);
+            if (!isJump && !isLadder)
+            {
+                rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                anim.SetBool("isJump", true);
+                isJump = true;
+            }
         }
 
         
@@ -113,6 +118,7 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Floor")
         {
             anim.SetBool("isJump", false);
+            isJump = false;
         }
 
         if(collision.gameObject.CompareTag("Enemies"))
